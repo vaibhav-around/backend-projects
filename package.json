@@ -1,0 +1,24 @@
+{
+  "name": "car-rental-system-backend",
+  "version": "1.0.0",
+  "description": "cohort 4.0 super 30 project",
+  "license": "ISC",
+  "author": "crevant",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "run",
+    "dev": "node app.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "pg": "^8.16.3",
+    "pg-promise": "^12.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-prettier": "^5.5.4",
+    "prettier": "^3.7.4"
+  }
+}
