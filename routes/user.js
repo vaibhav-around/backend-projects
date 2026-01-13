@@ -5,7 +5,7 @@ const {errorResponse,successResponse} = require("../utils/response");
 
 
 router.get("/", (req,res) => {
-    res.successResponse(200,"Hii, You hit Homepage!");
+     return successResponse(res,null,"Hii, You reached home page",200);
 });
 
 

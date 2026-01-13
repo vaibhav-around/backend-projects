@@ -1,28 +1,32 @@
 const express = require('express');
-const app = express();
-const port = 3000;
+const { hitLog } = require('./utils/serverHit');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
+const dotenv = require('dotenv');
+const bodyParser = require('body-parser');
+const {client} = require('./db/dbConfig');
 
+// environment variable config file
+dotenv.config();
 
+const app = express();
 // middlwares
-let hit = 0;
-const hitLog = (req,res,next) =>  {
-    hit += 1;
-    console.log(`TimesHit: ${hit}`);
-    next();
-}
+
+//// 1
 app.use(hitLog);
 
-
-
+/// 2
+// data conversion
+app.use(bodyParser.json());
 
 // Routings
 app.use('', userRoutes);
 app.use('/auth', authRoutes);
 
-
-
-app.listen(port, () => {
-    console.log(`app listening on port ${port}`);
-})
+app.listen(process.env.PORT, (error) => {
+  if (!error) {
+    console.log(`app listening on port ${process.env.PORT}`);
+  } else {
+    console.log(`There's some issue with server startup, ${error}`);
+  }
+});

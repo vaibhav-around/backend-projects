@@ -1,17 +1,22 @@
-function errorResponse(statusCode=400, message="",errorMessage=""){
-    return status(statusCode).json({
-        success: false,
-        message: message,
-        error:errorMessage,
-    });
+function successResponse(res,data = null,message='bruh',statusCode=200){
+    return res.status(statusCode).json({
+        success: statusCode < 400,
+        message,
+        error: "No Issue happened",
+        errorStatus: statusCode > 400,
+        data
+    })
 }
 
-function successResponse(statusCode=200, message="", errorMessage=""){
-    status(statusCode).json({
-        success:true,
-        message:message,
-        errorMessage:errorMessage
-    });
+
+function errorResponse(res,data = null,message="Error", statusCode=400) {
+    return res.status(statusCode).json({
+        success: statusCode > 400,
+        message: message,
+        error: message,
+        data
+    })
 }
+
 
 module.exports = {successResponse, errorResponse};
