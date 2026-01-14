@@ -4,7 +4,6 @@ const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
-const {client} = require('./db/dbConfig');
 
 // environment variable config file
 dotenv.config();
