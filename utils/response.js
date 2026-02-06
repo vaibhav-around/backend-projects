@@ -3,7 +3,6 @@ function successResponse(res,data = null,message='bruh',statusCode=200){
         success: statusCode < 400,
         message,
         error: "No Issue happened",
-        errorStatus: statusCode > 400,
         data
     })
 }

@@ -1,7 +1,6 @@
 const express = require('express');
-const { hitLog } = require('./utils/serverHit');
 const authRoutes = require('./routes/auth');
-const userRoutes = require('./routes/user');
+const appRoutes = require("./routes/app");
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 
@@ -11,16 +10,16 @@ dotenv.config();
 const app = express();
 // middlwares
 
-//// 1
-app.use(hitLog);
 
 /// 2
 // data conversion
 app.use(bodyParser.json());
 
 // Routings
-app.use('', userRoutes);
-app.use('/auth', authRoutes);
+app.use('/v1/auth', authRoutes);
+app.use('/v1/app', appRoutes);
+
+
 
 app.listen(process.env.PORT, (error) => {
   if (!error) {
