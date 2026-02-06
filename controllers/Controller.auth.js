@@ -114,15 +114,15 @@ const login = async (req, res, next) => {
     return errorResponse(res,null,"OOps!, Something went wrong", 500);
   }
 
-  let token = jwt.sign({ id: userId, username: userName  }, jwtKey);
+  let token = jwt.sign({ userId: userId, username: userName }, jwtKey);
 
   if(!token){
      console.log(`Error: token did not generated`);
      return errorResponse(res,null,"OOps! Something went wrong", 500);
   }
   
-  return successResponse(res,[{"key":token}],"Login successful",200);
-  res.send('Not Implemented: Login route');
+  res.setHeader(`Authorization: Bearer ${token}`);
+  return successResponse(res,null,"Login successful",200);
 };
 
 module.exports = { signup, login };
